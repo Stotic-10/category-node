@@ -1,0 +1,63 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/css/style.css"/>
+    </head>
+
+    <body>
+        <div id="header"><%- include("../partials/header.ejs") -%></div>
+        <div class="container">
+            <div id="card-area" class="row p-5 m-5">
+                <% findData.forEach(val=> { %>
+                    <% val.subCategorySchema.forEach(sub=> { %>
+                        <% val.extraCategorySchema.forEach(extra=> { %>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mt-5 p-2 rounded-3 position-relative border-3">
+                                    <img src="<%= extra.image %>" alt="<%= extra.title %>"
+                                        class="img-fluid border p-3 border-3 rounded-2" id="img">
+                                    <div class="card-body">
+                                        <div class="card-title" id="addtocart">
+                                            <a href="/edit?id=<%= val._id %>, <%= sub._id %>, <%= extra._id %>" class="btn bg-transparent add"><button
+                                                class="px-5 py-2 text-white fw-semibold rounded-3 text-center nav-link add"
+                                                id="addcart" onclick="add_cart()">Edit Data</button></a> 
+                                    
+                                            <a href="/delete?id=<%= val._id %>, <%= sub._id %>, <%= extra._id %>" class="btn bg-transparent view"><button
+                                                class="px-5 py-2 text-white fw-semibold rounded-3 text-center nav-link view"
+                                                id="addcart" onclick="add_cart()">Delete Data</button></a> 
+                        
+
+                                            <div id="name">
+                                                <span class="fs-5 fw-semibold opacity-75 text-center d-block title-m" style="margin-top: -60px;" id="name">
+                                                    <%= extra.title %>
+                                                </span>
+                                            </div>
+                                            <div id="color">
+                                                <span class="fw-medium opacity-50 d-block text-center"></span>
+                                            </div>
+                                            <div id="price">
+                                                <span class="d-block text-center mt-2 fw-bold">
+                                                    <%= extra.price %>
+                                                </span>
+                                            </div>
+                                            <div class="d-block text-center mt-1 fw-bold">
+                                                <span>&nbsp<del>5,999</del><span class="text-success">&nbspoff</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }); %>
+                        <% }); %>
+                    <% }); %>
+            </div>
+        </div>
+    </body>
+
+    </scrip>
+
+    </html>
